@@ -17,6 +17,15 @@ text = "Hold space to make your hair grow.
 Release to stop its growth.
 Make the longest hair possible!"
 
+[node name="End_Message" type="Label" parent="."]
+visible = false
+offset_left = 134.0
+offset_top = 358.0
+offset_right = 409.0
+offset_bottom = 436.0
+text = "Your hair has stopped its growth.
+Its final length is "
+
 [node name="Sprite2D" parent="." instance=ExtResource("1_3ftgt")]
 position = Vector2(560, 574)
 scale = Vector2(9, 9)
@@ -28,10 +37,11 @@ offset_right = 367.0
 offset_bottom = 567.0
 text = "Your hair is 0 mm tall"
 
-[node name="InputProcessing" type="Node" parent="." node_paths=PackedStringArray("score_label", "instructions_label", "target_node")]
+[node name="InputProcessing" type="Node" parent="." node_paths=PackedStringArray("score_label", "instructions_label", "end_message_label", "target_node")]
 script = ExtResource("1_ip4k8")
 score_label = NodePath("../Score")
 instructions_label = NodePath("../Instructions")
+end_message_label = NodePath("../End_Message")
 target_node = NodePath(".")
 middle_block_tree = ExtResource("3_3j7lx")
 top_block_hair_brown = ExtResource("4_sv2ng")
