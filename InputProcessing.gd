@@ -6,7 +6,7 @@ extends Node
 @export var middle_block_tree:PackedScene
 
 var score = 0
-var timer = 0
+var timer = 1
 var height = 430
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -27,7 +27,7 @@ func _process(delta):
 			##Insert pixel art instantiation
 			##Move camera n shit
 			
-		score_label.text = str("Your tree is ", score, " meters tall.")
+		score_label.text = str("Your hair is ", score, " mm tall.")
 		
 		if(score >= 1):
 			instructions_label.visible = false

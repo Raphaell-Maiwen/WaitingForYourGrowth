@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://r2t7w2022eot" path="res://bottomTreeBlock.tscn" id="1_3ftgt"]
 [ext_resource type="Script" path="res://InputProcessing.gd" id="1_ip4k8"]
-[ext_resource type="PackedScene" uid="uid://8xfsblt8pgwd" path="res://middleTreeBlock.tscn" id="2_t44yf"]
+[ext_resource type="PackedScene" uid="uid://dfvm8hhkevvxl" path="res://middleHairBrownBlock.tscn" id="3_3j7lx"]
 
 [node name="Node2D" type="Node2D"]
 position = Vector2(0, -1)
@@ -12,9 +12,9 @@ offset_left = 134.0
 offset_top = 358.0
 offset_right = 409.0
 offset_bottom = 436.0
-text = "Hold space to make your tree grow.
+text = "Hold space to make your hair grow.
 Release to stop its growth.
-Make the tallest tree possible!"
+Make the longest hair possible!"
 
 [node name="Sprite2D" parent="." instance=ExtResource("1_3ftgt")]
 position = Vector2(560, 574)
@@ -25,11 +25,11 @@ offset_left = 159.0
 offset_top = 541.0
 offset_right = 367.0
 offset_bottom = 567.0
-text = "Your tree is 300 meters tall"
+text = "Your hair is 0 mm tall"
 
 [node name="InputProcessing" type="Node" parent="." node_paths=PackedStringArray("score_label", "instructions_label", "target_node")]
 script = ExtResource("1_ip4k8")
 score_label = NodePath("../Score")
 instructions_label = NodePath("../Instructions")
 target_node = NodePath(".")
-middle_block_tree = ExtResource("2_t44yf")
+middle_block_tree = ExtResource("3_3j7lx")
