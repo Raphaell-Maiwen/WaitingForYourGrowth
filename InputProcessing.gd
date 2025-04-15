@@ -4,6 +4,7 @@ extends Node
 @export var instructions_label:Node
 @export var target_node:Node
 @export var middle_block_tree:PackedScene
+@export var top_block_hair_brown:PackedScene
 
 var score = 0
 var timer = 1
@@ -22,7 +23,7 @@ func _process(delta):
 			target_node.add_child(newInstance)
 			newInstance.global_position.x = 560
 			newInstance.global_position.y = height
-			height -= 144
+			height -= 127
 			
 			##Insert pixel art instantiation
 			##Move camera n shit
@@ -33,6 +34,10 @@ func _process(delta):
 			instructions_label.visible = false
 			
 	elif(Input.is_action_just_released("ui_select")):
+		var newInstance = top_block_hair_brown.instantiate()
+		target_node.add_child(newInstance)
+		newInstance.global_position.x = 560
+		newInstance.global_position.y = height
 		set_process(false)
 		print("Game Over")
 		

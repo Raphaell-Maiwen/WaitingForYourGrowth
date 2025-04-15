@@ -3,4 +3,5 @@
 [ext_resource type="Texture2D" uid="uid://c4k7fajpxj3nd" path="res://middleHairBrownBlockaseprite.png" id="1_mf35w"]
 
 [node name="Sprite2D" type="Sprite2D"]
+scale = Vector2(1, 0.5)
 texture = ExtResource("1_mf35w")
