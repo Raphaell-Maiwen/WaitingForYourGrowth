@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://8xfsblt8pgwd"]
+
+[ext_resource type="Texture2D" uid="uid://tthtadgtsvi6" path="res://middleTreeBlock.png" id="1_30v5j"]
+
+[node name="Sprite2D" type="Sprite2D"]
+scale = Vector2(9, 9)
+texture = ExtResource("1_30v5j")
