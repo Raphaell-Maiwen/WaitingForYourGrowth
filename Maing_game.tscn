@@ -37,11 +37,15 @@ offset_right = 367.0
 offset_bottom = 567.0
 text = "Your hair is 0 mm tall"
 
-[node name="InputProcessing" type="Node" parent="." node_paths=PackedStringArray("score_label", "instructions_label", "end_message_label", "target_node")]
+[node name="InputProcessing" type="Node" parent="." node_paths=PackedStringArray("score_label", "instructions_label", "end_message_label", "target_node", "camera")]
 script = ExtResource("1_ip4k8")
 score_label = NodePath("../Score")
 instructions_label = NodePath("../Instructions")
 end_message_label = NodePath("../End_Message")
 target_node = NodePath(".")
+camera = NodePath("../Camera2D")
 middle_block_tree = ExtResource("3_3j7lx")
 top_block_hair_brown = ExtResource("4_sv2ng")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(576, 325)

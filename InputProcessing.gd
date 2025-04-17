@@ -4,12 +4,20 @@ extends Node
 @export var instructions_label:Node
 @export var end_message_label:Node
 @export var target_node:Node
+@export var camera:Node
 @export var middle_block_tree:PackedScene
 @export var top_block_hair_brown:PackedScene
+
 
 var score = 0
 var timer = 1
 var height = 430
+var highestScore = 0
+
+var cameraSwitchCount = 0
+var cameraSwitchIntervals = 4
+
+var save_path = "user://variable.save"
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
@@ -22,14 +30,21 @@ func _process(delta):
 		if (timer >= 1):
 			timer = 0
 			score += 1
+			cameraSwitchCount += 1
 			
 			var newInstance = middle_block_tree.instantiate()
 			target_node.add_child(newInstance)
 			newInstance.global_position.x = 560
 			newInstance.global_position.y = height
 			height -= 127
-
-			##Move camera n shit
+			
+			if(cameraSwitchCount == cameraSwitchIntervals):
+				var posDiff = 127*4
+				camera.position.y -= posDiff
+				score_label.position.y -= posDiff
+				end_message_label.position.y -= posDiff
+				cameraSwitchCount = 0
+				print("go up")
 			
 		score_label.text = str("Your hair is ", score, " mm tall.")
 			
@@ -41,10 +56,30 @@ func _process(delta):
 		set_process(false)
 		end_message_label.visible = true
 		end_message_label.text = str("Your hair has stopped its growth. \nIts final length is " , score, "mm")
+		score_label.visible = false
+		saveScore()
 		
+		print("Highest score: ", highestScore)
 		
+func saveScore():
+	##Dictionary for player's name and file???
+	var file
+
+	if(FileAccess.file_exists(save_path)):
+		file = FileAccess.open(save_path, FileAccess.READ)
+		var formerHighScore = file.get_var(score)
+		if(formerHighScore < score):
+			file = FileAccess.open(save_path, FileAccess.WRITE)
+			file.store_var(score)
+			highestScore = score
+			
+	else:
+		file = FileAccess.open(save_path, FileAccess.WRITE)
+		file.store_var(score)
+		highestScore = score
 		
-		
+	
+			
 		
 		
 		
