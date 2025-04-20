@@ -57,28 +57,19 @@ func _process(delta):
 		end_message_label.visible = true
 		end_message_label.text = str("Your hair has stopped its growth. \nIts final length is " , score, "mm")
 		score_label.visible = false
-		saveScore()
+		
+		RecordScore()
 		
 		print("Highest score: ", highestScore)
 		
-func saveScore():
-	##Dictionary for player's name and file???
-	var file
-
-	if(FileAccess.file_exists(save_path)):
-		file = FileAccess.open(save_path, FileAccess.READ)
-		var formerHighScore = file.get_var(score)
-		if(formerHighScore < score):
-			file = FileAccess.open(save_path, FileAccess.WRITE)
-			file.store_var(score)
-			highestScore = score
-			
-	else:
-		file = FileAccess.open(save_path, FileAccess.WRITE)
-		file.store_var(score)
-		highestScore = score
 		
+func RecordScore():
+	await Leaderboards.post_guest_score("waitingforyourgrowth-main-Txxd", score, "Erwan")
 	
+	var lol = await Leaderboards.get_player_scores("waitingforyourgrowth-main-Txxd")
+	
+	for entry in lol.scores:
+		print(entry.score)
 			
 		
 		

@@ -15,6 +15,19 @@ run/main_scene="res://Maing_game.tscn"
 config/features=PackedStringArray("4.1", "GL Compatibility")
 config/icon="res://icon.svg"
 
+[autoload]
+
+Leaderboards="*res://addons/quiver_leaderboards/leaderboards.tscn"
+PlayerAccounts="*res://addons/quiver_player_accounts/player_accounts.tscn"
+
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/quiver_leaderboards/plugin.cfg", "res://addons/quiver_player_accounts/plugin.cfg")
+
+[quiver]
+
+general/auth_token="rY5JmkqLLvEm4lTHXt4PeRDN7ROm1dADecZNyids"
+
 [rendering]
 
 renderer/rendering_method="gl_compatibility"
