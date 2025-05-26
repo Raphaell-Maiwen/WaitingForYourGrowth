@@ -1,51 +1,55 @@
-[gd_scene load_steps=5 format=3 uid="uid://db0c4rijsh2gm"]
+[gd_scene load_steps=6 format=3 uid="uid://db0c4rijsh2gm"]
 
 [ext_resource type="PackedScene" uid="uid://r2t7w2022eot" path="res://bottomTreeBlock.tscn" id="1_3ftgt"]
 [ext_resource type="Script" path="res://InputProcessing.gd" id="1_ip4k8"]
 [ext_resource type="PackedScene" uid="uid://dfvm8hhkevvxl" path="res://middleHairBrownBlock.tscn" id="3_3j7lx"]
 [ext_resource type="PackedScene" uid="uid://cp7h575q0v3xi" path="res://topHairBrownBlock.tscn" id="4_sv2ng"]
+[ext_resource type="PackedScene" uid="uid://dv8lqc0fkh4rw" path="res://leaderboardSlot.tscn" id="5_cec6v"]
 
 [node name="Node2D" type="Node2D"]
 position = Vector2(0, -1)
-
-[node name="Instructions" type="Label" parent="."]
-offset_left = 134.0
-offset_top = 358.0
-offset_right = 409.0
-offset_bottom = 436.0
-text = "Hold space to make your hair grow.
-Release to stop its growth.
-Make the longest hair possible!"
-
-[node name="End_Message" type="Label" parent="."]
-visible = false
-offset_left = 134.0
-offset_top = 358.0
-offset_right = 409.0
-offset_bottom = 436.0
-text = "Your hair has stopped its growth.
-Its final length is "
 
 [node name="Sprite2D" parent="." instance=ExtResource("1_3ftgt")]
 position = Vector2(560, 574)
 scale = Vector2(9, 9)
 
-[node name="Score" type="Label" parent="."]
-offset_left = 159.0
-offset_top = 541.0
-offset_right = 367.0
-offset_bottom = 567.0
-text = "Your hair is 0 mm tall"
-
 [node name="InputProcessing" type="Node" parent="." node_paths=PackedStringArray("score_label", "instructions_label", "end_message_label", "target_node", "camera")]
 script = ExtResource("1_ip4k8")
-score_label = NodePath("../Score")
-instructions_label = NodePath("../Instructions")
-end_message_label = NodePath("../End_Message")
+score_label = NodePath("../CanvasLayer/Score")
+instructions_label = NodePath("../CanvasLayer/Instructions")
+end_message_label = NodePath("../CanvasLayer/End_Message")
 target_node = NodePath(".")
 camera = NodePath("../Camera2D")
 middle_block_tree = ExtResource("3_3j7lx")
 top_block_hair_brown = ExtResource("4_sv2ng")
+leaderboard_slot = ExtResource("5_cec6v")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(576, 325)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Instructions" type="Label" parent="CanvasLayer"]
+offset_left = 134.0
+offset_top = 357.0
+offset_right = 409.0
+offset_bottom = 435.0
+text = "Hold space to make your hair grow.
+Release to stop its growth.
+Make the longest hair possible!"
+
+[node name="End_Message" type="Label" parent="CanvasLayer"]
+visible = false
+offset_left = 134.0
+offset_top = 357.0
+offset_right = 409.0
+offset_bottom = 435.0
+text = "Your hair has stopped its growth.
+Its final length is "
+
+[node name="Score" type="Label" parent="CanvasLayer"]
+offset_left = 159.0
+offset_top = 540.0
+offset_right = 367.0
+offset_bottom = 566.0
+text = "Your hair is 0 mm tall"
